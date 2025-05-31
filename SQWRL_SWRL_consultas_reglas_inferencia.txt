@@ -1,0 +1,38 @@
+#Consultas SQWRL
+
+#Name:ActiveWifiInNeighborhood
+#Comment: Devuelve los hotspots ubicados en un Neighborhood específico por nombre.
+
+untitled-ontology-4:WiFiHotspot(?h) ^ untitled-ontology-4:hasLocation(?h, ?l) ^ untitled-ontology-4:onNeighborhood(?l, ?n) ^ untitled-ontology-4:hasName(?n, "Baisley Park"^^rdf:PlainLiteral) -> sqwrl:select(?h)
+
+#Name:CompaniasWiFiGratis
+#Comment:Devuelve los proveedores que ofrecen al menos un FreeHotspot.
+
+untitled-ontology-4:FreeHotspot(?h) ^ untitled-ontology-4:providedBy(?h, ?p) ^ untitled-ontology-4:hasName(?p, ?name) -> sqwrl:selectDistinct(?p, ?name)
+
+#Name:FreeHotspotLocation
+#Comment:Devuelve todos los hotspots del tipo FreeHotspot y su localización.
+
+untitled-ontology-4:FreeHotspot(?h) ^ untitled-ontology-4:hasLocation(?h, ?loc) -> sqwrl:select(?loc)
+
+#Name:LimitedWifiHotspotLocations
+#Comment:Se obtienen las ubicaciones (instancias de Location) asociadas a los puntos WiFi de tipo limitado (LimitedFreeHotspot), y se muestra el nombre de dicha ubicación.
+
+untitled-ontology-4:LimitedFreeHotspot(?h) ^ untitled-ontology-4:hasLocation(?h, ?l) ^ untitled-ontology-4:hasName(?l, ?name) -> sqwrl:select(?h, ?l, ?name)
+
+#Name:PuntoWifiPorProveedor
+#Comment:Filtra todos los hotspots proporcionados por un proveedor con cierto nombre. Este caso: NYPL
+
+untitled-ontology-4:FreeHotspot(?h) ^ untitled-ontology-4:providedBy(?h, ?p) ^ untitled-ontology-4:hasName(?p, "NYPL"^^rdf:PlainLiteral) -> sqwrl:select(?h)
+
+# Reglas SWRL
+
+#Name:NotWorkingWifi?
+#Comment:Describe si un punto wifi esta sin funcionar
+
+untitled-ontology-4:WiFiHotspot(?h) ^ untitled-ontology-4:hasRemarks(?h, ?rem) ^ swrlb:matches(?rem, ".*[Cc]los[ei].*"^^rdf:PlainLiteral) -> untitled-ontology-4:ClosedHotspot(?h)
+
+#Name:needManteniment
+#Comment:Marca que puntos wifi necesitan mantenimiento
+
+untitled-ontology-4:ClosedHotspot(?h) -> untitled-ontology-4:hasNeedsReview(?h, true)
