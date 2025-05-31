@@ -11,10 +11,10 @@ Permite razonar sobre datos reales de puntos WiFi y obtener información inferid
 
 ¿Cómo empezar?
 
-Abre el archivo cgargiacgallaUOC_Ontologia.rdf con Protégé.
-Usa el plugin Cellfie para poblar la ontología con los datos desde los archivos .xlsx.
-Ejecuta las reglas SWRL/SQWRL o las consultas SPARQL desde Protégé.
-La carpeta /Archivos contiene los conjuntos de datos originales y reducidos, por si se desea poblar nuevamente la ontología con las reglas incluidas.
+* Abre el archivo cgargiacgallaUOC_Ontologia.rdf con Protégé.
+* Usa el plugin Cellfie para poblar la ontología con los datos desde los archivos .xlsx.
+* Ejecuta las reglas SWRL/SQWRL o las consultas SPARQL desde Protégé.
+* La carpeta /Archivos contiene los conjuntos de datos originales y reducidos, por si se desea poblar nuevamente la ontología con las reglas incluidas.
 
 Consulta los archivos:
 
